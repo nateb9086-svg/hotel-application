@@ -7,6 +7,10 @@ public class Reservation {
     private int numberOfNights;
     private boolean weekend;
     private double reservationTotal;
+    private boolean king;
+    private boolean doubleRoom;
+
+
 
 
     public String getRoomType(){return roomType;}
@@ -17,6 +21,11 @@ public class Reservation {
     public boolean isWeekend(){return weekend;}
     public void setIsWeekend(boolean isWeekend) {this.weekend = weekend;};
     public double getReservationTotal(){return price * numberOfNights;}
+    public boolean isKing;
+    public boolean isDoubleRoom;
+
+
+
 
 
 }
