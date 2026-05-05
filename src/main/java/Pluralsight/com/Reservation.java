@@ -1,31 +1,56 @@
 package Pluralsight.com;
 
 public class Reservation {
-
     private String roomType;
-    private Double price;
     private int numberOfNights;
     private boolean weekend;
-    private double reservationTotal;
-    private boolean king;
-    private boolean doubleRoom;
 
+    public Reservation(String roomType, int numberOfNights, boolean weekend) {
+        this.roomType = roomType;
+        this.numberOfNights = numberOfNights;
+        this.weekend = weekend;
+    }
 
+    public double getPrice() {
+        double price = 0;
+        if (this.roomType.equalsIgnoreCase("king")) {
+            price = 139.00;
+        } else  {
+            price = 124.00;
+        }
 
+        if (this.isWeekend()) {
+            price = price * 1.10; //increase by 10%
+        }
 
-    public String getRoomType(){return roomType;}
-    public void setRoomType(String roomType) {this.roomType = roomType;}
-    public double getPrice(){return price;}
-    public int getNumberOfNights(){return numberOfNights;}
-    public void setNumberOfNights(int numberOfNights){this.numberOfNights = numberOfNights;}
-    public boolean isWeekend(){return weekend;}
-    public void setIsWeekend(boolean isWeekend) {this.weekend = weekend;};
-    public double getReservationTotal(){return price * numberOfNights;}
-    public boolean isKing;
-    public boolean isDoubleRoom;
+        return price;
+    }
 
+    private double getReservationTotal() {
+        return this.getPrice() * this.numberOfNights;
+    }
 
+    public String getRoomType() {
+        return roomType;
+    }
 
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
 
+    public int getNumberOfNights() {
+        return numberOfNights;
+    }
 
+    public void setNumberOfNights(int numberOfNights) {
+        this.numberOfNights = numberOfNights;
+    }
+
+    public boolean isWeekend() {
+        return weekend;
+    }
+
+    public void setWeekend(boolean weekend) {
+        this.weekend = weekend;
+    }
 }
