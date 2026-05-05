@@ -1,5 +1,5 @@
 package Pluralsight.com;
-
+import java.time.LocalTime;
 public class Employee {
     private int employeeId;
     private String name, department;
@@ -32,23 +32,32 @@ public class Employee {
             return 0;
         }
     }
+    public void punchIn(int time) {
+        this.startTime = time;
+    }
 
-        public void punchIn( int time){
+    public void punchIn() {
+        LocalTime now = LocalTime.now();
+        this.startTime = now.getHour() + now.getMinute();
+    }
+
+    public void punchOut(int time) {
+        this.hoursWorked += time-startTime;
+    }
+
+
+    public void punchOut() {
+        LocalTime now = LocalTime.now();
+        int currentTime = now.getHour() + now.getMinute();
+        this.hoursWorked += currentTime - this.startTime;
+    }
+
+    public void punchTimeCard(int time) {
+        if (this.startTime != -1) {
             this.startTime = time;
-        }
-        ;
-        public void punchOut( int time){
+        } else {
             this.hoursWorked += time - startTime;
-        }
-        ;
-        public void punchTimeCard( int time){
-            if (this.startTime != -1) {
-                this.startTime = time;
-            } else {
-                this.hoursWorked += time - startTime;
-                this.startTime = -1;
-
-
-            }
+            this.startTime = -1;
         }
     }
+}
